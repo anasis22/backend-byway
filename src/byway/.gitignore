@@ -1,0 +1,14 @@
+# Byte-compiled files
+*.pyc
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+
+# Django settings
+*.sqlite3
+db.sqlite3
+
+# Secrets
+.env
