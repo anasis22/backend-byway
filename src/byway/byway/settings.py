@@ -50,6 +50,9 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
 ]
 
+ALLOWED_HOSTS = ['backend-byway.onrender.com', 'localhost', '127.0.0.1']
+
+
 ROOT_URLCONF = 'byway.urls'
 
 TEMPLATES = [
