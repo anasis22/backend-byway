@@ -1,9 +1,14 @@
 from django.urls import path
+from django.http import HttpResponse
 from .views import register_view, login_view, logout_view , TopCategoriesLsit_view , TopCoursesList_view , TopInstructorsList_view , CustomerFeedbackList_view , buy_course , purchased_courses
 
 app_name = "web"
 
+def health_check(request):
+    return HttpResponse("OK")
+
 urlpatterns = [
+    path("",health_check, name="health_check"),
     path("api/top-categories/", TopCategoriesLsit_view.as_view(), name="top-categories"),
     path("api/top-courses/", TopCoursesList_view.as_view(), name="top-courses"),
     path("api/top-instructors/", TopInstructorsList_view.as_view(), name="top-instructors"),
