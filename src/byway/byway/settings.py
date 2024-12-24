@@ -77,11 +77,10 @@ WSGI_APPLICATION = 'byway.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='postgresql://anas:biD5msX1VnSPSoh9RFKf4BxcRNrAWS19@dpg-ctl6scogph6c739imcg0-a.singapore-postgres.render.com/byway_database_z8i8')
 }
 
 
