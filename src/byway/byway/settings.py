@@ -85,7 +85,7 @@ WSGI_APPLICATION = "byway.wsgi.application"
 
 DATABASES = {
     "default": dj_database_url.config(
-        default= os.getenv("DATABASE_URL")
+        default= "postgresql://anas:biD5msX1VnSPSoh9RFKf4BxcRNrAWS19@dpg-ctl6scogph6c739imcg0-a.singapore-postgres.render.com/byway_database_z8i8"
     )
 }
 
