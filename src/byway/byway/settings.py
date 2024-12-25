@@ -40,6 +40,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://talrop-byway.netlify.app/"
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -48,9 +49,10 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
+    "https://talrop-byway.netlify.app/"
 ]
 
-ALLOWED_HOSTS = ['backend-byway.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['backend-byway.onrender.com', 'https://talrop-byway.netlify.app/',  'localhost', '127.0.0.1']
 
 
 ROOT_URLCONF = 'byway.urls'
