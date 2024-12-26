@@ -43,20 +43,22 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# CORS
+
 CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "https://talrop-byway.netlify.app"]
 
 CORS_ALLOW_CREDENTIALS = True
 
+# CSRF
+
 CSRF_TRUSTED_ORIGINS = ["https://talrop-byway.netlify.app","http://localhost:5173"]
 
-ALLOWED_HOSTS = [
-    "backend-byway.onrender.com",
-    "https://talrop-byway.netlify.app/",
-    "localhost",
-    "127.0.0.1",
-]
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
+
 
 ROOT_URLCONF = "byway.urls"
 
@@ -132,8 +134,6 @@ MEDIA_URL = "/media/"
 
 MEDIA_ROOT = BASE_DIR / "media"
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
