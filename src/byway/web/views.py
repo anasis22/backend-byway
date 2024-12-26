@@ -69,9 +69,10 @@ def register_view(req):
             form = RegisterForm(data)
 
             if form.is_valid():
-                username = form.cleaned_data.get("username")
-                email = form.cleaned_data.get("email")
-                password = form.cleaned_data.get("password")
+                # Extract validated data
+                username = form.cleaned_data["username"]
+                email = form.cleaned_data["email"]
+                password = form.cleaned_data["password"]
 
                 # Create user if no errors
                 User.objects.create_user(
@@ -83,10 +84,14 @@ def register_view(req):
                 )
             else:
                 # Return form errors if invalid
-                return JsonResponse({"error": form.errors}, status=400)
+                return JsonResponse({"errors": form.errors}, status=400)
 
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON format"}, status=400)
+
+        except Exception as e:
+            # Catch any unexpected errors for better debugging
+            return JsonResponse({"error": str(e)}, status=500)
 
     # If not a POST request, return an error response
     return JsonResponse({"error": "Invalid request method"}, status=405)
@@ -163,7 +168,7 @@ def purchased_courses(request):
                 if p.course.course_detail_thumbnail
                 else ""
             ),
-            "price": p.course.price
+            "price": p.course.price,
         }
         for p in purchases
     ]
