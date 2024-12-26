@@ -7,6 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-x$uvsj4(p-1**p-&r34v=uef98d&^h4a=a_p@$g32%yrw795&0"
 
+
 DEBUG = True
 
 ALLOWED_HOSTS = [
@@ -58,6 +59,8 @@ CSRF_TRUSTED_ORIGINS = ["https://talrop-byway.netlify.app","http://localhost:517
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = "None"
 SESSION_COOKIE_SECURE = True
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 ROOT_URLCONF = "byway.urls"

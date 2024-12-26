@@ -91,6 +91,8 @@ def register_view(req):
 
     # If not a POST request, return an error response
     return JsonResponse({"error": "Invalid request method"}, status=405)
+
+
 # Login View
 @csrf_exempt
 def login_view(req):
