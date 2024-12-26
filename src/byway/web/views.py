@@ -75,13 +75,9 @@ def register_view(req):
                 password = form.cleaned_data["password"]
 
                 # Create user if no errors
-                User.objects.create_user(
-                    username=username, email=email, password=password
-                )
+                User.objects.create_user(username=username, email=email, password=password)
 
-                return JsonResponse(
-                    {"message": "User registered successfully"}, status=201
-                )
+                return JsonResponse({"message": "User registered successfully"}, status=201)
             else:
                 # Return form errors if invalid
                 return JsonResponse({"errors": form.errors}, status=400)
@@ -95,8 +91,6 @@ def register_view(req):
 
     # If not a POST request, return an error response
     return JsonResponse({"error": "Invalid request method"}, status=405)
-
-
 # Login View
 @csrf_exempt
 def login_view(req):
@@ -168,7 +162,7 @@ def purchased_courses(request):
                 if p.course.course_detail_thumbnail
                 else ""
             ),
-            "price": p.course.price,
+            "price": p.course.price
         }
         for p in purchases
     ]
