@@ -56,14 +56,21 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = ["https://talrop-byway.netlify.app","http://localhost:5173"]
 
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
-SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = "None"
+
+# session
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-CSRF_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
+
 SESSION_COOKIE_SAMESITE = "None"
+
+
+
+
 
 ROOT_URLCONF = "byway.urls"
 
