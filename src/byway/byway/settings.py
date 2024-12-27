@@ -54,7 +54,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 # CSRF
 
-CSRF_TRUSTED_ORIGINS = ["https://talrop-byway.netlify.app","http://localhost:5173"]
+CSRF_TRUSTED_ORIGINS = ["https://talrop-byway.netlify.app","http://localhost:5173","https://backend-byway.onrender.com"]
 
 CSRF_COOKIE_SECURE = True
 
