@@ -169,3 +169,12 @@ def purchased_courses(request):
         for p in purchases
     ]
     return JsonResponse({"purchased_courses": data}, status=200)
+
+# for CSRF token
+
+from django.middleware.csrf import get_token
+
+def get_csrf(request):
+    csrf_token = get_token(request)
+    return JsonResponse({"csrfToken": csrf_token})
+
