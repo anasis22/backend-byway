@@ -151,7 +151,6 @@ def buy_course(request, course_id):
 
 
 # Purchased Course view
-@login_required
 def purchased_courses(request):
     purchases = Purchase.objects.filter(user=request.user).select_related("course")
     data = [
