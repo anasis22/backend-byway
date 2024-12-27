@@ -152,19 +152,24 @@ def buy_course(request, course_id):
 
 # Purchased Course view
 def purchased_courses(request):
-    purchases = Purchase.objects.filter(user=request.user).select_related("course")
-    data = [
-        {
-            "course_id": p.course.id,
-            "title": p.course.title,
-            "course_description": p.course.course_description,
-            "course_detail_thumbnail": (
-                p.course.course_detail_thumbnail.url
-                if p.course.course_detail_thumbnail
-                else ""
-            ),
-            "price": p.course.price
-        }
-        for p in purchases
-    ]
-    return JsonResponse({"purchased_courses": data}, status=200)
+    # Check if the user is authenticated
+    if request.user.is_authenticated:
+        purchases = Purchase.objects.filter(user=request.user).select_related("course")
+        data = [
+            {
+                "course_id": p.course.id,
+                "title": p.course.title,
+                "course_description": p.course.course_description,
+                "course_detail_thumbnail": (
+                    p.course.course_detail_thumbnail.url
+                    if p.course.course_detail_thumbnail
+                    else ""
+                ),
+                "price": p.course.price,
+            }
+            for p in purchases
+        ]
+        return JsonResponse({"purchased_courses": data}, status=200)
+    else:
+        # Return an empty response or a message indicating unauthenticated users
+        return JsonResponse({"message": "User not authenticated.", "purchased_courses": []}, status=401)
